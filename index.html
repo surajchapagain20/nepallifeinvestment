@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon!</title>
+    <title>Nepal Life Investment Company</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -18,48 +19,40 @@
             margin: 0;
             padding: 0;
         }
-        
         .container {
             max-width: 800px;
             padding: 2rem;
         }
-        
         h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        
         p {
             font-size: 1.5rem;
             margin-bottom: 2rem;
         }
-        
         .countdown {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin-bottom: 2rem;
         }
-        
         .countdown-item {
             background: rgba(255,255,255,0.2);
             padding: 1rem;
             border-radius: 8px;
             min-width: 80px;
         }
-        
         .countdown-number {
             font-size: 2rem;
             font-weight: bold;
         }
-        
         .subscribe {
             display: flex;
             justify-content: center;
             margin-top: 2rem;
         }
-        
         input[type="email"] {
             padding: 0.8rem;
             border: none;
@@ -67,7 +60,6 @@
             width: 250px;
             font-size: 1rem;
         }
-        
         button {
             padding: 0.8rem 1.5rem;
             background: #ff6b6b;
@@ -78,25 +70,28 @@
             font-size: 1rem;
             transition: background 0.3s;
         }
-        
         button:hover {
             background: #ff5252;
         }
-        
         .social-icons {
             margin-top: 2rem;
         }
-        
         .social-icons a {
             color: white;
             margin: 0 10px;
             font-size: 1.5rem;
             text-decoration: none;
         }
+        #message {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <h3>Nepal Life Investment Company</h3>
         <h1>WE'RE COMING SOON!</h1>
         <p>We're working hard to bring you something amazing. Stay tuned!</p>
         
@@ -119,10 +114,13 @@
             </div>
         </div>
         
-        <div class="subscribe">
-            <input type="email" placeholder="Enter your email for updates">
-            <button>Notify Me</button>
-        </div>
+        <form id="subscribeForm" action="subscribe.php" method="POST">
+            <div class="subscribe">
+                <input type="email" name="email" placeholder="Enter your email for updates" required>
+                <button type="submit">Notify Me</button>
+            </div>
+        </form>
+        <div id="message"></div>
         
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook"></i></a>
@@ -133,9 +131,8 @@
     </div>
 
     <script>
-        // Countdown timer - set your launch date here
+        // Countdown timer
         const launchDate = new Date("2025-01-01T00:00:00").getTime();
-        
         const timer = setInterval(function() {
             const now = new Date().getTime();
             const distance = launchDate - now;
@@ -158,9 +155,25 @@
                 document.getElementById("seconds").innerHTML = "00";
             }
         }, 1000);
+
+        // Handle form submission with AJAX
+        document.getElementById("subscribeForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            fetch("subscribe.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("message").innerHTML = data;
+                document.getElementById("subscribeForm").reset();
+            })
+            .catch(error => {
+                document.getElementById("message").innerHTML = "Error: " + error;
+            });
+        });
     </script>
-    
-    <!-- Font Awesome for icons (optional) -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
