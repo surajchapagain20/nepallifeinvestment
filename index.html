@@ -3,48 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nepal Life Investment Company</title>
+    <title>Coming Soon!</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
             text-align: center;
-            background-color: #f4f4f4;
-            color: #333;
-            padding: 50px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
         }
+        
+        .container {
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
         h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
+        
         p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
         }
+        
         .countdown {
-            font-size: 2em;
-            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
-        .logo {
-            max-width: 200px;
-            margin-bottom: 30px;
+        
+        .countdown-item {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 80px;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .subscribe {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        input[type="email"] {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            width: 250px;
+            font-size: 1rem;
+        }
+        
+        button {
+            padding: 0.8rem 1.5rem;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #ff5252;
+        }
+        
+        .social-icons {
+            margin-top: 2rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <img src="undraw_dev_productivity_umsq_1.svg" alt="Logo" class="logo">
-    <!-- <img src="https://www.nepallife.com.np/storage/settings/nepallife-logo-1.jpg" alt="Logo" class="logo"> -->
-    <h1>We're Coming Soon!</h1>
-    <p>Our website is under construction. We'll be here soon with our new awesome site.</p>
-    <div class="countdown" id="countdown"></div>
-    <p>Subscribe to be notified when we launch:</p>
-    <form>
-        <input type="email" placeholder="Your email address" required>
-        <button type="submit">Notify Me</button>
-    </form>
+    <div class="container">
+        <h1>WE'RE COMING SOON!</h1>
+        <p>We're working hard to bring you something amazing. Stay tuned!</p>
+        
+        <div class="countdown">
+            <div class="countdown-item">
+                <div class="countdown-number" id="days">00</div>
+                <div>Days</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="hours">00</div>
+                <div>Hours</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="minutes">00</div>
+                <div>Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="seconds">00</div>
+                <div>Seconds</div>
+            </div>
+        </div>
+        
+        <div class="subscribe">
+            <input type="email" placeholder="Enter your email for updates">
+            <button>Notify Me</button>
+        </div>
+        
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
 
     <script>
-        // Countdown timer - set your launch date
-        const launchDate = new Date("2025-05-31").getTime();
+        // Countdown timer - set your launch date here
+        const launchDate = new Date("2025-01-01T00:00:00").getTime();
         
         const timer = setInterval(function() {
             const now = new Date().getTime();
@@ -53,16 +143,24 @@
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000;
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
             
             if (distance < 0) {
                 clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "We're Live!";
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
             }
         }, 1000);
     </script>
+    
+    <!-- Font Awesome for icons (optional) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
