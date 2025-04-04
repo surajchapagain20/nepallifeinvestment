@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .countdown {
+            font-size: 2em;
+            margin: 30px 0;
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <img src="your-logo.png" alt="Logo" class="logo">
+    <h1>We're Coming Soon!</h1>
+    <p>Our website is under construction. We'll be here soon with our new awesome site.</p>
+    <div class="countdown" id="countdown"></div>
+    <p>Subscribe to be notified when we launch:</p>
+    <form>
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Notify Me</button>
+    </form>
+
+    <script>
+        // Countdown timer - set your launch date
+        const launchDate = new Date("2024-12-31").getTime();
+        
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000;
+            
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+            
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "We're Live!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
