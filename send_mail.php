@@ -1,10 +1,13 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars(trim($_POST['name']));
     $email = htmlspecialchars(trim($_POST['email']));
     $message = htmlspecialchars(trim($_POST['message']));
 
-    $to = "Tanushree.Agrawal@nlico.onmicrosoft.com"; // ✅ Change this
+    $to = "Tanushree.Agrawal@nlico.onmicrosoft.com"; 
     $subject = "New Contact Form Message from $name";
     $headers = "From: $email\r\n";
     $headers .= "Reply-To: $email\r\n";
@@ -23,4 +26,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "invalid";
 }
-?>
