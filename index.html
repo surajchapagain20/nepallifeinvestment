@@ -53,6 +53,7 @@
 
 
 <!-- Hero Section -->
+<!-- Hero Section -->
 <section class="hero py-5 bg-light">
   <div class="container text-center">
     <h3>Welcome to Nepal Life Investment Company</h3>
@@ -66,28 +67,55 @@
       <!-- Gallery Item 1 -->
       <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
         <div class="card h-100 shadow-sm">
-          <img src="Investment.jpg" class="card-img-top" alt="Gallery 1">
+          <img src="Investment.jpg" class="card-img-top gallery-img" alt="Gallery 1" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="Investment.jpg">
         </div>
       </div>
 
       <!-- Gallery Item 2 -->
       <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
         <div class="card h-100 shadow-sm">
-          <img src="Investment1.jpg" class="card-img-top" alt="Gallery 2">
+          <img src="Investment1.jpg" class="card-img-top gallery-img" alt="Gallery 2" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="Investment1.jpg">
         </div>
       </div>
 
       <!-- Gallery Item 3 -->
       <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
         <div class="card h-100 shadow-sm">
-          <img src="Investment2.jpg" class="card-img-top" alt="Gallery 3">
+          <img src="Investment2.jpg" class="card-img-top gallery-img" alt="Gallery 3" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="Investment2.jpg">
         </div>
       </div>
 
-      
+      <!-- Gallery Item 4 -->
+      <!--<div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="Investment.jpg" class="card-img-top gallery-img" alt="Gallery 4" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="Investment.jpg">
+        </div>
+      </div> -->
     </div>
   </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <img src="" id="modalImage" class="img-fluid rounded" alt="Modal Image">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript to handle image preview -->
+<script>
+  document.querySelectorAll('.gallery-img').forEach(item => {
+    item.addEventListener('click', event => {
+      const imgSrc = item.getAttribute('data-img');
+      document.getElementById('modalImage').setAttribute('src', imgSrc);
+    });
+  });
+</script>
+
 
 
 <!-- About Section -->
